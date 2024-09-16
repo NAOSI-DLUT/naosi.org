@@ -1,0 +1,53 @@
+<header>
+  <a class="brand" href="/">
+    <img class="brand-img" src="/logo.png" alt="naosi-logo" />
+    <span class="brand-title">大连理工大学网络与开源软件协会</span>
+  </a>
+  <div class="navbar">
+    <a href="/blog">EVENT</a>
+    <a href="/blog">BLOG</a>
+  </div>
+</header>
+
+<style>
+  header {
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+  }
+
+  .brand-img {
+    height: 40px;
+    margin-right: 10px;
+  }
+
+  .brand-title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .navbar {
+    display: flex;
+    gap: 10px;
+  }
+
+  .navbar a {
+    font-size: 0.8rem;
+    color: var(--disabled);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .navbar a:hover {
+    color: var(--primary);
+  }
+</style>
