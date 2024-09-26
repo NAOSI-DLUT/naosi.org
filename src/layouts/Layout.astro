@@ -28,7 +28,9 @@ const { title } = Astro.props;
   <body>
     <div class="wrapper">
       <Header />
-      <slot />
+      <main class="content">
+        <slot />
+      </main>
     </div>
     <Footer />
   </body>
@@ -56,6 +58,10 @@ const { title } = Astro.props;
   .wrapper {
     max-width: 1000px;
     margin: 0 auto;
+    padding: 20px;
+  }
+
+  .content {
     padding: 20px;
   }
 </style>

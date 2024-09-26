@@ -1,13 +1,49 @@
 ---
+import Service from "../components/Service.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <main>
-    <h1>Network And Open Source Institute</h1>
-    <p>
-      NAOSI is a student organization at Dalian University of Technology that
-      focuses on open source software and networking.
-    </p>
-  </main>
+  <h2 class="service-title">服务导航</h2>
+  <div class="service-grid">
+    <Service
+      icon="graduation-cap"
+      url="https://pan.naosi.org"
+      title="资料云盘"
+      description="汇集各类学习资料"
+    />
+    <Service
+      icon="cloud"
+      url="http://pan.dlut.edu.cn"
+      title="大工云盘"
+      description="大工官方云盘"
+    />
+    <Service
+      icon="archive"
+      url="http://mirror.dlut.edu.cn"
+      title="开源镜像"
+      description="大工开源软件镜像站"
+    />
+    <Service icon="globe" url="/" title="DNS66.6" description="202.118.66.6" />
+    <Service
+      icon="clock-o"
+      url="/"
+      title="授时服务"
+      description="time.dlut.edu.cn"
+    />
+  </div>
+
+  <style>
+    .service-title {
+      font-weight: normal;
+      font-size: 1.6rem;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+      text-align: center;
+    }
+  </style>
 </Layout>

@@ -1,0 +1,41 @@
+---
+const { icon, url, title, description } = Astro.props;
+---
+
+<div class="service">
+  <a class={`service-logo fa fa-${icon}`} href={url}></a>
+  <h3>
+    <span>{title}</span>
+    <a class="fa fa-link" href={url}></a>
+  </h3>
+  <p>{description}</p>
+</div>
+
+<style>
+  .service {
+    color: black;
+  }
+
+  .service-logo {
+    display: block;
+    color: var(--primary);
+    font-size: 3rem;
+    margin: 16px 0;
+  }
+
+  .service h3 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin: 10px 0;
+  }
+
+  .service a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  .service p {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+</style>
