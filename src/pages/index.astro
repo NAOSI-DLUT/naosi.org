@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <h2 class="service-title">服务导航</h2>
+  <h2 class="home-heading">服务导航</h2>
   <div class="service-grid">
     <Service
       icon="graduation-cap"
@@ -13,30 +13,38 @@ import Layout from "../layouts/Layout.astro";
       description="汇集各类学习资料"
     />
     <Service
-      icon="cloud"
-      url="http://pan.dlut.edu.cn"
-      title="大工云盘"
-      description="大工官方云盘"
-    />
-    <Service
       icon="archive"
       url="http://mirror.dlut.edu.cn"
       title="开源镜像"
       description="大工开源软件镜像站"
     />
-    <Service icon="globe" url="/" title="DNS66.6" description="202.118.66.6" />
+    <Service
+      icon="globe"
+      url="https://guide.naosi.org"
+      title="域名解析"
+      description="202.118.66.6"
+    />
     <Service
       icon="clock-o"
-      url="/"
+      url="https://guide.naosi.org"
       title="授时服务"
       description="time.dlut.edu.cn"
     />
+    <Service
+      icon="envelope"
+      url="https://naosi-dlut.feishu.cn/mail"
+      title="社团邮箱"
+      description="社团专用邮箱"
+    />
   </div>
-
   <style>
-    .service-title {
+    .home-heading {
       font-weight: normal;
       font-size: 1.6rem;
+    }
+
+    .home-heading::before {
+      content: '# ';
     }
 
     .service-grid {
