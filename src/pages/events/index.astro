@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const entries = await getCollection("events");
+---
+
+<Layout>
+  {
+    entries.map((entry) => (
+      <article>
+        <h2>
+          <a href={`/events/${entry.slug}`}>{entry.data.title}</a>
+        </h2>
+        <p>{entry.body.slice(0, 100)}</p>
+      </article>
+    ))
+  }
+</Layout>
