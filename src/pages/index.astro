@@ -1,11 +1,15 @@
 ---
+import { getCollection } from "astro:content";
 import Service from "../components/Service.astro";
 import Layout from "../layouts/Layout.astro";
+
+const events = await getCollection("events");
+const blogs = await getCollection("blogs");
 ---
 
 <Layout>
   <h2 class="home-heading">服务导航</h2>
-  <div class="service-grid">
+  <div class="service-group">
     <Service
       icon="graduation-cap"
       url="https://man.naosi.org/course/pan/"
@@ -26,7 +30,7 @@ import Layout from "../layouts/Layout.astro";
     />
     <Service
       icon="clock-o"
-      url="https://manual.naosi.orglife/network/#ntp"
+      url="https://manual.naosi.org/life/network/#ntp"
       title="授时服务"
       description="time.dlut.edu.cn"
     />
@@ -37,21 +41,62 @@ import Layout from "../layouts/Layout.astro";
       description="社团专用邮箱"
     />
   </div>
-  <style>
-    .home-heading {
-      font-weight: normal;
-      font-size: 1.6rem;
-    }
-
-    .home-heading::before {
-      content: '# ';
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 16px;
-      text-align: center;
-    }
-  </style>
+  <div class="content-group">
+    <div class="events">
+      <h2>近期活动</h2>
+      {
+        events.map((entry) => (
+          <article>
+            <h3>
+              <a href={`/blogs/${entry.slug}`}>{entry.data.title}</a>
+            </h3>
+            <p>{entry.body.slice(0, 100)}</p>
+          </article>
+        ))
+      }
+    </div>
+    <div class="blogs">
+      <h2>社团博客</h2>
+      {
+        blogs.map((entry) => (
+          <article>
+            <h3>
+              <a href={`/blogs/${entry.slug}`}>{entry.data.title}</a>
+            </h3>
+            <p>{entry.body.slice(0, 100)}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
 </Layout>
+
+<style>
+  .home-heading {
+    font-weight: normal;
+    font-size: 1.6rem;
+  }
+
+  .home-heading::before {
+    content: "# ";
+  }
+
+  .service-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    text-align: center;
+  }
+
+  .content-group {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 600px) {
+    .content-group {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
