@@ -9,11 +9,21 @@
   </div>
 </header>
 
+<script>
+  document.querySelectorAll<HTMLAnchorElement>(".navbar a").forEach((a) => {
+    if (location.pathname.startsWith(a.pathname)) {
+      a.classList.add("active");
+    }
+  });
+</script>
+
 <style>
   header {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
   }
 
   .brand {
@@ -39,13 +49,18 @@
   }
 
   .navbar a {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--disabled);
     text-decoration: none;
-    transition: color 0.3s;
+    font-weight: bold;
   }
 
   .navbar a:hover {
+    color: var(--primary-hover);
+  }
+
+  .navbar a.active {
     color: var(--primary);
+    border-bottom: 2px solid var(--primary);
   }
 </style>

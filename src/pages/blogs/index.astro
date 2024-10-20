@@ -7,13 +7,17 @@ const entries = await getCollection("blogs");
 
 <Layout>
   {
-    entries.map((entry) => (
-      <article>
-        <h2>
-          <a href={`/blogs/${entry.slug}`}>{entry.data.title}</a>
-        </h2>
-        <p>{entry.body.slice(0, 100)}</p>
-      </article>
-    ))
+    entries
+      .sort((a, b) => {
+        return b.data.date - a.data.date;
+      })
+      .map((entry) => (
+        <article>
+          <h2>
+            <a href={`/blogs/${entry.slug}`}>{entry.data.title}</a>
+          </h2>
+          <p>{entry.body.slice(0, 200)}</p>
+        </article>
+      ))
   }
 </Layout>

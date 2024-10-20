@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Service from "../components/Service.astro";
 import Layout from "../layouts/Layout.astro";
+import dayjs from "dayjs";
 
 const events = await getCollection("events");
 const blogs = await getCollection("blogs");
@@ -17,10 +18,16 @@ const blogs = await getCollection("blogs");
       description="汇集各类学习资料"
     />
     <Service
+      icon="compass"
+      url="https://man.naosi.org/"
+      title="大工生存手册"
+      description="大工人的一站式生存指南"
+    />
+    <Service
       icon="archive"
-      url="http://mirror.dlut.edu.cn"
+      url="http://mirror.dlut.edu.cn/"
       title="开源镜像"
-      description="大工开源软件镜像站"
+      description="开源软件镜像站"
     />
     <Service
       icon="globe"
@@ -45,27 +52,43 @@ const blogs = await getCollection("blogs");
     <div class="events">
       <h2>近期活动</h2>
       {
-        events.map((entry) => (
-          <article>
-            <h3>
-              <a href={`/events/${entry.slug}`}>{entry.data.title}</a>
-            </h3>
-            <p>{entry.body.slice(0, 100)}</p>
-          </article>
-        ))
+        events
+          .sort((a, b) => {
+            return b.data.date - a.data.date;
+          })
+          .slice(0, 5)
+          .map((entry) => (
+            <article>
+              <h3>
+                <a href={`/events/${entry.slug}`}>{entry.data.title}</a>
+              </h3>
+              <p class="info">
+                <i class="fa fa-clock-o" />
+                <span>{dayjs(entry.data.date).format("YYYY-MM-DD HH:mm")}</span>
+                <i class="fa fa-map-marker" />
+                <span>{entry.data.location}</span>
+              </p>
+              <p>{entry.body.slice(0, 200)}</p>
+            </article>
+          ))
       }
     </div>
     <div class="blogs">
       <h2>社团博客</h2>
       {
-        blogs.map((entry) => (
-          <article>
-            <h3>
-              <a href={`/blogs/${entry.slug}`}>{entry.data.title}</a>
-            </h3>
-            <p>{entry.body.slice(0, 100)}</p>
-          </article>
-        ))
+        blogs
+          .sort((a, b) => {
+            return b.data.date - a.data.date;
+          })
+          .slice(0, 5)
+          .map((entry) => (
+            <article>
+              <h3>
+                <a href={`/blogs/${entry.slug}`}>{entry.data.title}</a>
+              </h3>
+              <p>{entry.body.slice(0, 200)}</p>
+            </article>
+          ))
       }
     </div>
   </div>
@@ -91,12 +114,31 @@ const blogs = await getCollection("blogs");
   .content-group {
     display: grid;
     gap: 16px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50% 50%;
+  }
+
+  .content-group article {
+    margin: 16px 0;
+  }
+
+  .content-group article h3,
+  .content-group article p {
+    margin: 6px 0;
+  }
+
+  .content-group article .info {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .content-group article .info i:not(:first-of-type) {
+    margin-left: 8px;
   }
 
   @media (max-width: 600px) {
     .content-group {
-      grid-template-columns: 1fr;
+      grid-template-columns: 100%;
     }
   }
 </style>
