@@ -1,0 +1,57 @@
+---
+import dayjs from "dayjs";
+import PlainTextWrapper from "./PlainTextWrapper.astro";
+
+const { entry, hideTime } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<article>
+  <h3>
+    <a href={`/${entry.collection}/${entry.slug}`}>{entry.data.title}</a>
+  </h3>
+  <p class="info">
+    <i class="fa fa-clock-o"></i>
+    <span>
+      {
+        dayjs(entry.data.date).format(
+          hideTime ? "YYYY-MM-DD" : "YYYY-MM-DD HH:mm"
+        )
+      }
+    </span>
+    {
+      entry.data.location ? (
+        <>
+          <i class="fa fa-map-marker" />
+          <span>{entry.data.location}</span>
+        </>
+      ) : null
+    }
+  </p>
+  <p>
+    <PlainTextWrapper limit="200">
+      <Content />
+    </PlainTextWrapper>
+  </p>
+</article>
+
+<style>
+  article {
+    margin: 16px 0;
+  }
+
+  h3,
+  p {
+    margin: 6px 0;
+  }
+
+  .info {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .info i:not(:first-of-type) {
+    margin-left: 8px;
+  }
+</style>

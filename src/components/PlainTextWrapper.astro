@@ -1,0 +1,7 @@
+---
+const { limit } = Astro.props;
+const html = await Astro.slots.render("default");
+const textContent = html.replace(/<[^>]*>/g, "");
+---
+
+{textContent.slice(0, limit) + (limit < textContent.length ? "..." : "")}

@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Service from "../components/Service.astro";
 import Layout from "../layouts/Layout.astro";
-import dayjs from "dayjs";
+import Article from "../components/Article.astro";
 
 const events = await getCollection("events");
 const blogs = await getCollection("blogs");
@@ -57,20 +57,7 @@ const blogs = await getCollection("blogs");
             return b.data.date - a.data.date;
           })
           .slice(0, 5)
-          .map((entry) => (
-            <article>
-              <h3>
-                <a href={`/events/${entry.slug}`}>{entry.data.title}</a>
-              </h3>
-              <p class="info">
-                <i class="fa fa-clock-o" />
-                <span>{dayjs(entry.data.date).format("YYYY-MM-DD HH:mm")}</span>
-                <i class="fa fa-map-marker" />
-                <span>{entry.data.location}</span>
-              </p>
-              <p>{entry.body.slice(0, 200)}</p>
-            </article>
-          ))
+          .map(async (entry) => <Article entry={entry} />)
       }
     </div>
     <div class="blogs">
@@ -81,14 +68,7 @@ const blogs = await getCollection("blogs");
             return b.data.date - a.data.date;
           })
           .slice(0, 5)
-          .map((entry) => (
-            <article>
-              <h3>
-                <a href={`/blogs/${entry.slug}`}>{entry.data.title}</a>
-              </h3>
-              <p>{entry.body.slice(0, 200)}</p>
-            </article>
-          ))
+          .map(async (entry) => <Article entry={entry} hideTime />)
       }
     </div>
   </div>
@@ -115,25 +95,6 @@ const blogs = await getCollection("blogs");
     display: grid;
     gap: 16px;
     grid-template-columns: 50% 50%;
-  }
-
-  .content-group article {
-    margin: 16px 0;
-  }
-
-  .content-group article h3,
-  .content-group article p {
-    margin: 6px 0;
-  }
-
-  .content-group article .info {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .content-group article .info i:not(:first-of-type) {
-    margin-left: 8px;
   }
 
   @media (max-width: 600px) {
