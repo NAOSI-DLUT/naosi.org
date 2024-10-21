@@ -16,7 +16,9 @@ const { Content } = await entry.render();
 ---
 
 <Layout>
-  <h1>{entry.data.title}</h1>
-  <p>{dayjs(entry.data.date).format("YYYY-MM-DD HH:mm")}</p>
-  <Content />
+  <div class="markdown-body">
+    <h1>{entry.data.title}</h1>
+    <p>{dayjs(entry.data.date).format("YYYY-MM-DD HH:mm")}</p>
+    <Content />
+  </div>
 </Layout>
