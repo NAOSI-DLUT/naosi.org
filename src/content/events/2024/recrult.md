@@ -8,4 +8,4 @@ location: 天桥西侧
 
 欢迎大家届时来 NAOSI 摊位参与活动！我们是23号位置，地点在天桥西面。
 
-![](../../images/recruit2024.jpg)
+![](../../../images/recruit2024.jpg)
