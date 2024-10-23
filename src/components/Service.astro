@@ -1,12 +1,18 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const { icon, url, title, description } = Astro.props;
 ---
 
 <div class="service">
-  <a class={`service-logo fa fa-${icon}`} href={url} target="_blank"></a>
-  <h3>
+  <a class="service-logo" href={url} target="_blank">
+    <Icon name={icon} />
+  </a>
+  <h3 class="icon-align">
     <span>{title}</span>
-    <a class="fa fa-hand-o-right" href={url} target="_blank"></a>
+    <a href={url} target="_blank">
+      <Icon name="ri:link" />
+    </a>
   </h3>
   <p>{description}</p>
 </div>

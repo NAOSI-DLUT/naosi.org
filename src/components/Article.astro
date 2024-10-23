@@ -1,6 +1,7 @@
 ---
 import dayjs from "dayjs";
 import PlainTextWrapper from "./PlainTextWrapper.astro";
+import { Icon } from "astro-icon/components";
 
 const { entry, hideTime } = Astro.props;
 const { Content } = await entry.render();
@@ -10,9 +11,9 @@ const { Content } = await entry.render();
   <h3>
     <a href={`/${entry.collection}/${entry.slug}`}>{entry.data.title}</a>
   </h3>
-  <p class="info">
-    <i class="fa fa-clock-o"></i>
+  <p class="info icon-align">
     <span>
+      <Icon name="ri:calendar-event-fill" />
       {
         dayjs(entry.data.date).format(
           hideTime ? "YYYY-MM-DD" : "YYYY-MM-DD HH:mm"
@@ -21,10 +22,10 @@ const { Content } = await entry.render();
     </span>
     {
       entry.data.location ? (
-        <>
-          <i class="fa fa-map-marker" />
-          <span>{entry.data.location}</span>
-        </>
+        <span>
+          <Icon name="ri:map-pin-fill" />
+          {entry.data.location}
+        </span>
       ) : null
     }
   </p>

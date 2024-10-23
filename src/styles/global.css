@@ -37,3 +37,11 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.icon-align a,
+.icon-align span {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 4px;
+  vertical-align: middle;
+}
