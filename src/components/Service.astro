@@ -8,40 +8,32 @@ const { icon, url, title, description } = Astro.props;
   <a class="service-logo" href={url} target="_blank">
     <Icon name={icon} />
   </a>
-  <h3 class="icon-align">
+  <h3 class="service-title">
     <span>{title}</span>
-    <a href={url} target="_blank">
+    <a class="icon-align" href={url} target="_blank">
       <Icon name="ri:link" />
     </a>
   </h3>
-  <p>{description}</p>
+  <div class="service-description">{description}</div>
 </div>
 
 <style>
   .service {
-    color: black;
+    margin: 12px;
   }
 
   .service-logo {
     display: block;
     color: var(--primary);
     font-size: 3rem;
-    margin: 16px 0;
   }
 
-  .service h3 {
+  .service-title {
+    display: inline-flex;
+    align-items: center;
+    column-gap: 4px;
     font-size: 1.2rem;
     font-weight: normal;
-    margin: 10px 0;
-  }
-
-  .service a {
-    color: var(--primary);
-    text-decoration: none;
-  }
-
-  .service p {
-    font-size: 1rem;
     margin: 10px 0;
   }
 </style>

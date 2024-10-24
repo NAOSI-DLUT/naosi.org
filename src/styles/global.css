@@ -38,10 +38,16 @@ img {
   height: auto;
 }
 
-.icon-align a,
-.icon-align span {
+.icon-align {
   display: inline-flex;
   align-items: center;
-  column-gap: 4px;
   vertical-align: middle;
+}
+
+.icon-align [data-icon]:not(:first-child) {
+  margin-left: 4px;
+}
+
+.icon-align [data-icon]:not(:last-child) {
+  margin-right: 4px;
 }

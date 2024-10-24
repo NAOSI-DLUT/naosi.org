@@ -9,7 +9,7 @@ const blogs = await getCollection("blogs");
 ---
 
 <Layout>
-  <h2 class="home-heading">服务导航</h2>
+  <h2>服务导航</h2>
   <div class="service-group">
     <Service
       icon="ri:graduation-cap-fill"
@@ -20,8 +20,8 @@ const blogs = await getCollection("blogs");
     <Service
       icon="ri:compass-3-fill"
       url="https://man.naosi.org/"
-      title="大工生存手册"
-      description="大工人的一站式生存指南"
+      title="生存手册"
+      description="一站式生活指南"
     />
     <Service
       icon="ri:archive-2-fill"
@@ -45,7 +45,7 @@ const blogs = await getCollection("blogs");
       icon="ri:mail-fill"
       url="https://naosi-dlut.feishu.cn/mail"
       title="社团邮箱"
-      description="社团专用邮箱"
+      description="support@naosi.org"
     />
   </div>
   <div class="content-group">
@@ -75,12 +75,12 @@ const blogs = await getCollection("blogs");
 </Layout>
 
 <style>
-  .home-heading {
+  h2 {
     font-weight: normal;
     font-size: 1.6rem;
   }
 
-  .home-heading::before {
+  h2::before {
     content: "# ";
   }
 

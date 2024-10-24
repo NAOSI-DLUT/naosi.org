@@ -11,20 +11,22 @@ const { Content } = await entry.render();
   <h3>
     <a href={`/${entry.collection}/${entry.slug}`}>{entry.data.title}</a>
   </h3>
-  <p class="info icon-align">
-    <span>
+  <p class="info">
+    <span class="icon-align">
       <Icon name="ri:calendar-event-fill" />
-      {
-        dayjs(entry.data.date).format(
-          hideTime ? "YYYY-MM-DD" : "YYYY-MM-DD HH:mm"
-        )
-      }
+      <span>
+        {
+          dayjs(entry.data.date).format(
+            hideTime ? "YYYY-MM-DD" : "YYYY-MM-DD HH:mm"
+          )
+        }
+      </span>
     </span>
     {
       entry.data.location ? (
-        <span>
+        <span class="icon-align">
           <Icon name="ri:map-pin-fill" />
-          {entry.data.location}
+          <span>{entry.data.location}</span>
         </span>
       ) : null
     }
@@ -49,10 +51,6 @@ const { Content } = await entry.render();
   .info {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-  }
-
-  .info i:not(:first-of-type) {
-    margin-left: 8px;
+    column-gap: 8px;
   }
 </style>
