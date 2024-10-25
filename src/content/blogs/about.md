@@ -1,5 +1,5 @@
 ---
-title: Hello NAOSI!
+title: 社团简介
 date: 2021-03-20T00:00:00+08:00
 ---
 
