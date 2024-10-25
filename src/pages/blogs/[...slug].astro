@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import dayjs from "dayjs";
+import { Icon } from "astro-icon/components";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blogs");
@@ -18,7 +19,14 @@ const { Content } = await entry.render();
 <Layout>
   <div class="markdown-body">
     <h1>{entry.data.title}</h1>
-    <p>{dayjs(entry.data.date).format("YYYY-MM-DD HH:mm")}</p>
+    <p class="info">
+      <span class="icon-align">
+        <Icon name="ri:calendar-event-fill" />
+        <span>
+          {dayjs(entry.data.date).format("YYYY-MM-DD")}
+        </span>
+      </span>
+    </p>
     <Content />
   </div>
 </Layout>
