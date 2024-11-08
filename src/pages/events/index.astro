@@ -1,12 +1,12 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
 import Article from "../../components/Article.astro";
+import ListLayout from "../../layouts/ListLayout.astro";
 
 const entries = await getCollection("events");
 ---
 
-<Layout>
+<ListLayout title="近期活动">
   {
     entries
       .sort((a, b) => {
@@ -14,4 +14,4 @@ const entries = await getCollection("events");
       })
       .map((entry) => <Article entry={entry} hideTime />)
   }
-</Layout>
+</ListLayout>

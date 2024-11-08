@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
 import dayjs from "dayjs";
 import { Icon } from "astro-icon/components";
+import ContentLayout from "../../layouts/ContentLayout.astro";
 
 export async function getStaticPaths() {
   const eventEntries = await getCollection("events");
@@ -16,7 +16,7 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Layout>
+<ContentLayout>
   <div class="markdown-body">
     <h1>{entry.data.title}</h1>
     <p class="info">
@@ -33,4 +33,4 @@ const { Content } = await entry.render();
     </p>
     <Content />
   </div>
-</Layout>
+</ContentLayout>
