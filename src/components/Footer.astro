@@ -1,3 +1,7 @@
+---
+import Tag from "./Tag.astro";
+---
+
 <footer class="bg-lime-900 text-white">
   <div
     class="max-w-4xl mx-auto p-4 prose grid grid-cols-1 md:grid-cols-2 gap-x-4"
@@ -9,18 +13,26 @@
       </p>
     </div>
     <div>
-      <p>联系我们：</p>
-      <ul>
-        <li>
-          <a href="https://github.com/NAOSI-DLUT"> GitHub </a>
-        </li>
-        <li>
-          <a href="https://qm.qq.com/q/AxAh9JeZs4"> 724021138 </a>
-        </li>
-        <li>
-          <a href="mailto:support@naosi.org"> support@naosi.org </a>
-        </li>
-      </ul>
+      <p>
+        联系我们：
+
+        <Tag href="https://github.com/NAOSI-DLUT">
+          <span class="i-ri-github-fill"></span>
+          <span>GitHub</span>
+        </Tag>
+        <Tag href="https://qm.qq.com/q/AxAh9JeZs4">
+          <span class="i-ri-qq-fill"></span>
+          <span>724021138</span>
+        </Tag>
+        <Tag href="https://space.bilibili.com/1058346981">
+          <span class="i-ri-bilibili-fill"></span>
+          <span>NAOSI-DLUT</span>
+        </Tag>
+        <Tag href="mailto:support@naosi.org">
+          <span class="i-ri-mail-fill"></span>
+          <span>support@naosi.org</span>
+        </Tag>
+      </p>
     </div>
   </div>
 </footer>

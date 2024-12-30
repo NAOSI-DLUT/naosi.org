@@ -1,13 +1,13 @@
 ---
 import { Image } from "astro:assets";
-import logo from "../assets/logo.svg";
+import naosi from "../assets/naosi.svg";
 ---
 
 <header
   class="sticky top-0 bg-white border-b border-gray-200 z-10 flex justify-between items-center p-4"
 >
   <a class="inline-flex items-center gap-4" href="/">
-    <Image width={100} src={logo} alt="naosi-logo" />
+    <Image width={100} src={naosi} alt="naosi-logo" />
     <span class="text-xl text-black font-bold hidden md:inline"
       >大连理工大学网络与开源协会</span
     >
@@ -15,7 +15,6 @@ import logo from "../assets/logo.svg";
   <div class="navbar text-gray inline-flex gap-x-2">
     <a href="/events">Events</a>
     <a href="/blog">Blog</a>
-    <a href="https://github.com/NAOSI-DLUT">GitHub</a>
   </div>
 </header>
 
