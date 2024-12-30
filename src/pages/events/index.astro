@@ -3,15 +3,15 @@ import { getCollection } from "astro:content";
 import Article from "../../components/Article.astro";
 import ListLayout from "../../layouts/ListLayout.astro";
 
-const entries = await getCollection("events");
+const events = await getCollection("events");
 ---
 
 <ListLayout title="近期活动">
   {
-    entries
+    events
       .sort((a, b) => {
-        return b.data.date - a.data.date;
+        return b.data.date.getTime() - a.data.date.getTime();
       })
-      .map((entry) => <Article entry={entry} hideTime />)
+      .map(async (event) => <Article entry={event} />)
   }
 </ListLayout>

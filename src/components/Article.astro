@@ -1,56 +1,54 @@
 ---
 import dayjs from "dayjs";
 import PlainTextWrapper from "./PlainTextWrapper.astro";
-import { Icon } from "astro-icon/components";
+import Tag from "./Tag.astro";
+import type { Render } from "astro:content";
 
-const { entry, hideTime } = Astro.props;
+interface Props {
+  entry: {
+    data: {
+      title: string;
+      date?: Date;
+      location?: string;
+      tags?: string[];
+    };
+    slug: string;
+    collection: string;
+    render(): Render[".md"];
+  };
+}
+
+const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<article>
-  <h3>
-    <a href={`/${entry.collection}/${entry.slug}`}>{entry.data.title}</a>
-  </h3>
-  <p class="info">
-    <span class="icon-align">
-      <Icon name="ri:calendar-event-fill" />
-      <span>
-        {
-          dayjs(entry.data.date).format(
-            hideTime ? "YYYY-MM-DD" : "YYYY-MM-DD HH:mm"
-          )
-        }
-      </span>
-    </span>
-    {
-      entry.data.location ? (
-        <span class="icon-align">
-          <Icon name="ri:map-pin-fill" />
-          <span>{entry.data.location}</span>
-        </span>
-      ) : null
-    }
-  </p>
+<div class="my-4">
   <p>
+    <a
+      class="text-xl text-primary font-bold"
+      href={`/${entry.collection}/${entry.slug}`}>{entry.data.title}</a
+    >
+    {
+      entry.data.date && (
+        <Tag>
+          <span class="i-ri-calendar-event-fill" />
+          <span>{dayjs(entry.data.date).format("YYYY-MM-DD HH:mm:ss")}</span>
+        </Tag>
+      )
+    }
+    {
+      entry.data.location && (
+        <Tag>
+          <span class="i-ri-map-pin-2-fill" />
+          <span>{entry.data.location}</span>
+        </Tag>
+      )
+    }
+    {entry.data.tags && entry.data.tags.map((tag) => <Tag>{tag}</Tag>)}
+  </p>
+  <p class="break-words">
     <PlainTextWrapper limit="200">
       <Content />
     </PlainTextWrapper>
   </p>
-</article>
-
-<style>
-  article {
-    margin: 16px 0;
-  }
-
-  h3,
-  p {
-    margin: 6px 0;
-  }
-
-  .info {
-    display: inline-flex;
-    align-items: center;
-    column-gap: 8px;
-  }
-</style>
+</div>

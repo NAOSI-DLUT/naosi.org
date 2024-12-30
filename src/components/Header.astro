@@ -1,79 +1,35 @@
-<header>
-  <div class="header-inner">
-    <a class="brand" href="/">
-      <img class="brand-img" src="/logo.svg" alt="naosi-logo" />
-      <span class="brand-title">大连理工大学网络与开源协会</span>
-    </a>
-    <div class="navbar">
-      <a href="/events">EVENT</a>
-      <a href="/blogs">BLOG</a>
-      <a href="https://github.com/NAOSI-DLUT">GITHUB</a>
-      <div></div>
-    </div>
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.svg";
+---
 
-    <script>
-      document.querySelectorAll<HTMLAnchorElement>(".navbar a").forEach((a) => {
-        if (location.href.startsWith(a.href)) {
-          a.classList.add("active");
-        }
-      });
-    </script>
-
-    <style>
-      header {
-        position: sticky;
-        top: 0;
-        background-color: white;
-        border-bottom: var(--border) 1px solid;
-      }
-
-      .header-inner {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        margin: auto;
-        padding: 16px;
-        max-width: var(--width);
-      }
-
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        color: black;
-        text-decoration: none;
-      }
-
-      .brand-img {
-        height: 30px;
-        margin-right: 10px;
-      }
-
-      .brand-title {
-        font-size: 20px;
-        font-weight: bold;
-      }
-
-      .navbar {
-        display: flex;
-        gap: 10px;
-      }
-
-      .navbar a {
-        color: var(--disabled);
-        text-decoration: none;
-        font-weight: bold;
-      }
-
-      .navbar a:hover {
-        color: var(--primary-hover);
-      }
-
-      .navbar a.active {
-        color: var(--primary);
-        border-bottom: 2px solid var(--primary);
-      }
-    </style>
+<header
+  class="sticky top-0 bg-white border-b border-gray-200 z-10 flex justify-between items-center p-4"
+>
+  <a class="inline-flex items-center gap-4" href="/">
+    <Image width={100} src={logo} alt="naosi-logo" />
+    <span class="text-xl text-black font-bold hidden md:inline"
+      >大连理工大学网络与开源协会</span
+    >
+  </a>
+  <div class="navbar text-gray inline-flex gap-x-2">
+    <a href="/events">Events</a>
+    <a href="/blog">Blog</a>
+    <a href="https://github.com/NAOSI-DLUT">GitHub</a>
   </div>
 </header>
+
+<style>
+  .navbar a:hover,
+  .navbar a.active {
+    @apply text-black;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>(".navbar a").forEach((a) => {
+    if (location.href.startsWith(a.href)) {
+      a.classList.add("active");
+    }
+  });
+</script>

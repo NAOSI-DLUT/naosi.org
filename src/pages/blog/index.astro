@@ -3,15 +3,15 @@ import { getCollection } from "astro:content";
 import Article from "../../components/Article.astro";
 import ListLayout from "../../layouts/ListLayout.astro";
 
-const entries = await getCollection("blogs");
+const blog = await getCollection("blog");
 ---
 
 <ListLayout title="社团博客">
   {
-    entries
+    blog
       .sort((a, b) => {
-        return b.data.date - a.data.date;
+        return b.data.date.getTime() - a.data.date.getTime();
       })
-      .map(async (entry) => <Article entry={entry} hideTime />)
+      .map(async (post) => <Article entry={post} />)
   }
 </ListLayout>

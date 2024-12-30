@@ -1,61 +1,26 @@
----
-import { Icon } from "astro-icon/components";
----
-
-<footer>
-  <div class="footer-inner">
+<footer class="bg-lime-900 text-white">
+  <div
+    class="max-w-4xl mx-auto p-4 prose grid grid-cols-1 md:grid-cols-2 gap-x-4"
+  >
     <div>
       <p>
         大连理工大学网络与开源协会成立于 2021
-        年，是一个由大连理工大学学生自发组成的开源爱好者组织。
-      </p>
-      <p>
-        我们奉行开源与奉献的协会精神，以项目和热爱为基础，致力于推动开源文化的发展。
+        年，是一个由大连理工大学学生自发组成的开源爱好者组织。我们奉行开源与奉献的协会精神，以项目和热爱为基础，致力于推动开源文化的发展。
       </p>
     </div>
     <div>
       <p>联系我们：</p>
       <ul>
         <li>
-          <a class="icon-align" href="https://github.com/NAOSI-DLUT">
-            <Icon name="ri:github-fill" />
-            <span>GitHub</span>
-          </a>
+          <a href="https://github.com/NAOSI-DLUT"> GitHub </a>
         </li>
         <li>
-          <a class="icon-align" href="https://qm.qq.com/q/AxAh9JeZs4">
-            <Icon name="ri:qq-fill" />
-            <span>724021138</span>
-          </a>
+          <a href="https://qm.qq.com/q/AxAh9JeZs4"> 724021138 </a>
         </li>
         <li>
-          <a class="icon-align" href="mailto:support@naosi.org">
-            <Icon name="ri:mail-fill" />
-            <span>support@naosi.org</span>
-          </a>
+          <a href="mailto:support@naosi.org"> support@naosi.org </a>
         </li>
       </ul>
     </div>
-    <div>
-      <p>
-        <img src="/logo.svg" alt="naosi-logo" width="240px" />
-      </p>
-    </div>
   </div>
 </footer>
-
-<style>
-  footer {
-    background-color: #34452d;
-  }
-
-  .footer-inner {
-    display: grid;
-    gap: 16px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 20px;
-    color: #fdfdfd;
-  }
-</style>

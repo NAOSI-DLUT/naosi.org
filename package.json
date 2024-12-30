@@ -1,20 +1,28 @@
 {
   "name": "naosi.org",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.3",
-    "@iconify-json/ri": "^1.2.2",
-    "astro": "^4.15.5",
-    "astro-icon": "^1.1.1",
+    "@astrojs/rss": "^4.0.10",
+    "@astrojs/sitemap": "^3.2.1",
+    "@iconify-json/ri": "^1.2.5",
+    "astro": "^5.1.1",
+    "astro-pagefind": "^1.7.0",
     "dayjs": "^1.11.13",
-    "typescript": "^5.6.2"
+    "katex": "^0.16.18",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
+    "sharp": "^0.33.5",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "@unocss/preset-uno": "^0.65.3",
+    "@unocss/reset": "^0.65.3",
+    "unocss": "^0.65.3"
   }
 }

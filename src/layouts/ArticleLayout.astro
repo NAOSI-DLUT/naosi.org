@@ -1,0 +1,78 @@
+---
+import dayjs from "dayjs";
+import Layout from "./Layout.astro";
+import Tag from "../components/Tag.astro";
+
+interface Props {
+  title?: string;
+  date?: Date;
+  location?: string;
+  tags?: string[];
+  comments?: boolean;
+}
+
+const { title, date, location, tags, comments = true } = Astro.props;
+---
+
+<Layout title={title}>
+  <div class="text-base m-auto prose prose-truegray">
+    <h1>{title}</h1>
+    <p>
+      {
+        date && (
+          <Tag>
+            <span class="i-ri-calendar-event-fill" />
+            <span>{dayjs(date).format("YYYY-MM-DD HH:mm:ss")}</span>
+          </Tag>
+        )
+      }
+      {
+        location && (
+          <Tag>
+            <span class="i-ri-map-pin-2-fill" />
+            <span>{location}</span>
+          </Tag>
+        )
+      }
+      {tags && tags.map((tag) => <Tag>{tag}</Tag>)}
+    </p>
+    <slot />
+
+    {
+      comments && (
+        <script
+          is:inline
+          src="https://giscus.app/client.js"
+          data-repo="NAOSI-DLUT/naosi.org"
+          data-repo-id="R_kgDOMv6ylQ"
+          data-category="Announcements"
+          data-category-id="DIC_kwDOMv6ylc4CkjfG"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async
+        />
+      )
+    }
+  </div>
+</Layout>
+
+<style>
+  .prose {
+    overflow-wrap: break-word;
+  }
+
+  .prose code:not(pre code) {
+    white-space: pre-wrap;
+  }
+
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>

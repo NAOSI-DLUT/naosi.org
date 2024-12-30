@@ -4,8 +4,8 @@ import dayjs from "dayjs";
 import ArticleLayout from "../../layouts/ArticleLayout.astro";
 
 export async function getStaticPaths() {
-  const eventEntries = await getCollection("events");
-  return eventEntries.map((entry) => ({
+  const blogEntries = await getCollection("blog");
+  return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
@@ -15,10 +15,6 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<ArticleLayout
-  title={entry.data.title}
-  date={entry.data.date}
-  location={entry.data.location}
->
+<ArticleLayout title={entry.data.title} date={entry.data.date}>
   <Content />
 </ArticleLayout>

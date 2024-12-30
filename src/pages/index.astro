@@ -5,45 +5,47 @@ import Layout from "../layouts/Layout.astro";
 import Article from "../components/Article.astro";
 
 const events = await getCollection("events");
-const blogs = await getCollection("blogs");
+const blog = await getCollection("blog");
 ---
 
 <Layout>
   <h2>服务导航</h2>
-  <div class="service-group">
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+  >
     <Service
-      icon="ri:graduation-cap-fill"
-      url="https://man.naosi.org/course/pan/"
+      icon="i-ri-graduation-cap-fill"
+      href="https://man.naosi.org/course/pan/"
       title="资料云盘"
       description="汇集各类学习资料"
     />
     <Service
-      icon="ri:compass-3-fill"
-      url="https://man.naosi.org/"
+      icon="i-ri-compass-3-fill"
+      href="https://man.naosi.org/"
       title="生存手册"
       description="一站式生活指南"
     />
     <Service
-      icon="ri:archive-2-fill"
-      url="http://mirror.dlut.edu.cn/"
+      icon="i-ri-archive-2-fill"
+      href="http://mirror.dlut.edu.cn/"
       title="开源镜像"
       description="开源软件镜像站"
     />
     <Service
-      icon="ri:earth-fill"
-      url="https://manual.naosi.org/life/network/#dns"
+      icon="i-ri-earth-fill"
+      href="http://man.naosi.org/life/service/network/#dns"
       title="域名解析"
       description="202.118.66.6"
     />
     <Service
-      icon="ri:time-fill"
-      url="https://manual.naosi.org/life/network/#ntp"
+      icon="i-ri-time-fill"
+      href="http://man.naosi.org/life/service/network/#ntp"
       title="授时服务"
       description="time.dlut.edu.cn"
     />
     <Service
-      icon="ri:mail-fill"
-      url="https://naosi-dlut.feishu.cn/mail"
+      icon="i-ri-mail-fill"
+      href="https://naosi-dlut.feishu.cn/mail"
       title="社团邮箱"
       description="support@naosi.org"
     />
@@ -51,25 +53,29 @@ const blogs = await getCollection("blogs");
   <div class="content-group">
     <div class="events">
       <h2>近期活动</h2>
-      {
-        events
-          .sort((a, b) => {
-            return b.data.date - a.data.date;
-          })
-          .slice(0, 5)
-          .map(async (entry) => <Article entry={entry} />)
-      }
+      <div>
+        {
+          events
+            .sort((a, b) => {
+              return b.data.date.getTime() - a.data.date.getTime();
+            })
+            .slice(0, 5)
+            .map(async (entry) => <Article entry={entry} />)
+        }
+      </div>
     </div>
     <div class="blogs">
       <h2>社团博客</h2>
-      {
-        blogs
-          .sort((a, b) => {
-            return b.data.date - a.data.date;
-          })
-          .slice(0, 5)
-          .map(async (entry) => <Article entry={entry} hideTime />)
-      }
+      <div>
+        {
+          blog
+            .sort((a, b) => {
+              return b.data.date.getTime() - a.data.date.getTime();
+            })
+            .slice(0, 5)
+            .map(async (entry) => <Article entry={entry} />)
+        }
+      </div>
     </div>
   </div>
 </Layout>
