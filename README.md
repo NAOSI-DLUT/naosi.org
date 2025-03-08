@@ -6,7 +6,7 @@ NAOSI 官网 [naosi.org](https://naosi.org) 的源代码。
 
 ## 添加新文章
 
-在 `src/content` 目录下添加新的 Markdown 文件。文字分为社团活动和社团博客两种类型，分别放在 `events` 和 `blog` 目录下。具体 frontmatter 格式可参考已有的文件。
+在 `src/content` 目录下添加新的 Markdown 文件。文章分为社团活动和社团博客两种类型，分别放在 `events` 和 `blog` 目录下。具体 frontmatter 格式可参考已有的文件。
 
 ## 本地预览
 
