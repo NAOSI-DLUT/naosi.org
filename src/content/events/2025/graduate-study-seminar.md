@@ -1,5 +1,5 @@
 ---
-title: 考研wo谈会
+title: 2025考研wo谈会
 date: 2025-04-12T18:00:00+08:00
 location: B101
 ---

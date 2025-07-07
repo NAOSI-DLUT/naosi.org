@@ -1,5 +1,5 @@
 ---
-title: 就业wo谈会
+title: 2024就业wo谈会
 date: 2024-11-23T18:00:00+08:00
 location: B205
 ---

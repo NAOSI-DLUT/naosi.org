@@ -32,7 +32,7 @@ const { Content } = await entry.render();
       entry.data.date && (
         <Tag>
           <span class="i-ri-calendar-event-fill" />
-          <span>{dayjs(entry.data.date).format("YYYY-MM-DD HH:mm:ss")}</span>
+          <span>{dayjs(entry.data.date).format("YYYY-MM-DD")}</span>
         </Tag>
       )
     }
