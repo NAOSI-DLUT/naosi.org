@@ -8,21 +8,22 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.12",
-    "@astrojs/sitemap": "^3.6.0",
-    "@iconify-json/ri": "^1.2.5",
-    "astro": "^5.13.9",
-    "astro-pagefind": "^1.7.0",
-    "dayjs": "^1.11.13",
-    "katex": "^0.16.21",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.2",
+    "@iconify-json/ri": "^1.2.10",
+    "astro": "^6.1.4",
+    "astro-pagefind": "^1.8.6",
+    "dayjs": "^1.11.20",
+    "katex": "^0.16.45",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
-    "sharp": "^0.33.5",
-    "typescript": "^5.7.2"
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
-    "@unocss/preset-uno": "^0.65.3",
-    "@unocss/reset": "^0.65.3",
-    "unocss": "^0.65.3"
+    "@unocss/astro": "^66.6.7",
+    "@unocss/preset-uno": "^66.6.7",
+    "@unocss/reset": "^66.6.7",
+    "typescript": "^5.9.3",
+    "unocss": "^66.6.7"
   }
 }

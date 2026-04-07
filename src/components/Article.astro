@@ -2,31 +2,24 @@
 import dayjs from "dayjs";
 import PlainTextWrapper from "./PlainTextWrapper.astro";
 import Tag from "./Tag.astro";
-import type { Render } from "astro:content";
+import { render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  entry: {
-    data: {
-      title: string;
-      date?: Date;
-      location?: string;
-      tags?: string[];
-    };
-    slug: string;
-    collection: string;
-    render(): Render[".md"];
-  };
+  entry: CollectionEntry<"blog"> | CollectionEntry<"events">;
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
+const location = "location" in entry.data ? entry.data.location : undefined;
+const tags = "tags" in entry.data ? entry.data.tags : undefined;
 ---
 
 <div class="my-4">
   <p>
     <a
       class="text-xl text-primary font-bold"
-      href={`/${entry.collection}/${entry.slug}`}>{entry.data.title}</a
+      href={`/${entry.collection}/${entry.id}`}>{entry.data.title}</a
     >
     {
       entry.data.date && (
@@ -37,14 +30,14 @@ const { Content } = await entry.render();
       )
     }
     {
-      entry.data.location && (
+      location && (
         <Tag>
           <span class="i-ri-map-pin-2-fill" />
-          <span>{entry.data.location}</span>
+          <span>{location}</span>
         </Tag>
       )
     }
-    {entry.data.tags && entry.data.tags.map((tag) => <Tag>{tag}</Tag>)}
+    {tags?.map((tag) => <Tag>{tag}</Tag>)}
   </p>
   <p class="break-words">
     <PlainTextWrapper limit="200">
