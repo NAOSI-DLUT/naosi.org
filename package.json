@@ -13,7 +13,6 @@
     "@iconify-json/ri": "^1.2.10",
     "astro": "^6.1.4",
     "astro-pagefind": "^1.8.6",
-    "dayjs": "^1.11.20",
     "katex": "^0.16.45",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",

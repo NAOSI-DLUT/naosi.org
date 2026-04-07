@@ -1,5 +1,4 @@
 ---
-import dayjs from "dayjs";
 import Layout from "./Layout.astro";
 import Tag from "../components/Tag.astro";
 
@@ -22,7 +21,7 @@ const { title, date, location, tags, comments = true } = Astro.props;
         date && (
           <Tag>
             <span class="i-ri-calendar-event-fill" />
-            <span>{dayjs(date).format("YYYY-MM-DD HH:mm:ss")}</span>
+            <span>{date.toLocaleDateString()}</span>
           </Tag>
         )
       }

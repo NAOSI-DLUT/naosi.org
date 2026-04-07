@@ -23,9 +23,6 @@ importers:
       astro-pagefind:
         specifier: ^1.8.6
         version: 1.8.6(astro@6.1.4(@types/node@24.12.2)(jiti@2.6.1)(rollup@4.60.1)(tsx@4.19.2)(typescript@5.9.3)(yaml@2.6.0))
-      dayjs:
-        specifier: ^1.11.20
-        version: 1.11.20
       katex:
         specifier: ^0.16.45
         version: 0.16.45
@@ -1163,9 +1160,6 @@ packages:
   csso@5.0.5:
     resolution: {integrity: sha512-0LrrStPOdJj+SPCCrGhzryycLjwcgUSHBtxNA8aIDxf0GLsRh1cKYhB00Gd1lDOS4yGH69+SNn13+TWbVHETFQ==}
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0, npm: '>=7.0.0'}
-
-  dayjs@1.11.20:
-    resolution: {integrity: sha512-YbwwqR/uYpeoP4pu043q+LTDLFBLApUP6VxRihdfNTqu4ubqMlGDLd6ErXhEgsyvY0K6nCs7nggYumAN+9uEuQ==}
 
   debug@4.3.7:
     resolution: {integrity: sha512-Er2nc/H7RrMXZBFCEim6TCmMk02Z8vLC2Rbi1KEBggpo0fS6l0S1nnapwmIi3yW/+GOJap1Krg4w0Hg80oCqgQ==}
@@ -3107,8 +3101,6 @@ snapshots:
   csso@5.0.5:
     dependencies:
       css-tree: 2.2.1
-
-  dayjs@1.11.20: {}
 
   debug@4.3.7:
     dependencies:

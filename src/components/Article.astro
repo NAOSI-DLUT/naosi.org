@@ -1,5 +1,4 @@
 ---
-import dayjs from "dayjs";
 import PlainTextWrapper from "./PlainTextWrapper.astro";
 import Tag from "./Tag.astro";
 import { render } from "astro:content";
@@ -25,7 +24,7 @@ const tags = "tags" in entry.data ? entry.data.tags : undefined;
       entry.data.date && (
         <Tag>
           <span class="i-ri-calendar-event-fill" />
-          <span>{dayjs(entry.data.date).format("YYYY-MM-DD")}</span>
+          <span>{entry.data.date.toLocaleDateString()}</span>
         </Tag>
       )
     }
