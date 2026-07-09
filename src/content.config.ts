@@ -4,7 +4,7 @@ import { z } from "astro/zod";
 
 export const collections = {
   blog: defineCollection({
-    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
+    loader: glob({ pattern: "**/*.{md,mdx}", base: "./content/blog" }),
     schema: z.object({
       title: z.string(),
       date: z.date(),
@@ -12,7 +12,7 @@ export const collections = {
     }),
   }),
   events: defineCollection({
-    loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/events" }),
+    loader: glob({ pattern: "**/*.{md,mdx}", base: "./content/events" }),
     schema: z.object({
       title: z.string(),
       date: z.date(),
