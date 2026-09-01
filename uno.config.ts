@@ -13,8 +13,16 @@ export default defineConfig({
   theme: {
     colors: {
       primary: {
-        DEFAULT: "#549d36",
+        DEFAULT: "#549b35",
+        dark: "#376b25",
+        soft: "#edf6e8",
+        light: "#dceecf",
       },
+      accent: "#712914",
+      ink: "#192219",
+      muted: "#687166",
+      paper: "#f7f9f4",
+      line: "#dfe6da",
     },
   },
 });

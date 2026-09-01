@@ -14,10 +14,10 @@ const location = "location" in entry.data ? entry.data.location : undefined;
 const tags = "tags" in entry.data ? entry.data.tags : undefined;
 ---
 
-<div class="my-4">
-  <p>
+<article class="group border-b border-line py-5 last:border-b-0">
+  <div class="flex flex-wrap items-center gap-2">
     <a
-      class="text-xl text-primary font-bold"
+      class="mr-auto text-lg font-bold leading-snug text-ink decoration-none group-hover:text-primary-dark"
       href={`/${entry.collection}/${entry.id}`}>{entry.data.title}</a
     >
     {
@@ -37,10 +37,26 @@ const tags = "tags" in entry.data ? entry.data.tags : undefined;
       )
     }
     {tags?.map((tag) => <Tag>{tag}</Tag>)}
-  </p>
-  <p class="break-words">
+  </div>
+  <p class="summary mb-0 mt-3 break-words text-sm leading-6 text-muted">
     <PlainTextWrapper limit="200">
       <Content />
     </PlainTextWrapper>
   </p>
-</div>
+  <a
+    class="mt-3 inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-primary decoration-none"
+    href={`/${entry.collection}/${entry.id}`}
+  >
+    阅读更多
+    <span class="i-ri-arrow-right-line" aria-hidden="true"></span>
+  </a>
+</article>
+
+<style>
+  .summary {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+</style>

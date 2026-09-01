@@ -1,21 +1,32 @@
 ---
 import Tag from "./Tag.astro";
+import { Image } from "astro:assets";
+import naosi from "../assets/naosi.svg";
 ---
 
-<footer class="bg-lime-900">
+<footer class="mt-12 border-t-4 border-primary bg-[#1c2b1a] text-white">
   <div
-    class="max-w-4xl mx-auto p-4 prose text-white grid grid-cols-1 md:grid-cols-2 gap-x-4"
+    class="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-4 py-12 sm:px-6 md:grid-cols-[1.4fr_0.7fr_1fr] lg:px-8"
   >
     <div>
-      <p>
+      <Image width={104} src={naosi} alt="NAOSI" />
+      <p class="mt-5 max-w-md text-sm leading-7 text-white/70">
         大连理工大学网络与开源协会成立于 2021
         年，是一个由大连理工大学学生自发组成的开源爱好者组织。我们奉行开源与奉献的协会精神，以项目和热爱为基础，致力于推动开源文化的发展。
       </p>
     </div>
+    <nav aria-label="页脚导航">
+      <p class="mt-0 text-xs font-bold uppercase tracking-[0.18em] text-primary-light">探索</p>
+      <div class="mt-4 flex flex-col items-start gap-3 text-sm">
+        <a class="text-white/70 decoration-none hover:text-white" href="/#services">校园服务</a>
+        <a class="text-white/70 decoration-none hover:text-white" href="/events">近期活动</a>
+        <a class="text-white/70 decoration-none hover:text-white" href="/blog">社团博客</a>
+        <a class="text-white/70 decoration-none hover:text-white" href="/feed.xml">RSS 订阅</a>
+      </div>
+    </nav>
     <div>
-      <p>
-        联系我们：
-
+      <p class="mt-0 text-xs font-bold uppercase tracking-[0.18em] text-primary-light">联系我们</p>
+      <div class="mt-4 flex flex-wrap gap-2">
         <Tag href="https://github.com/NAOSI-DLUT">
           <span class="i-ri-github-fill"></span>
           <span>GitHub</span>
@@ -32,7 +43,13 @@ import Tag from "./Tag.astro";
           <span class="i-ri-mail-fill"></span>
           <span>support@naosi.org</span>
         </Tag>
-      </p>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="mx-auto flex max-w-6xl flex-wrap justify-between gap-2 px-4 py-5 text-xs text-white/40 sm:px-6 lg:px-8">
+      <span>© {new Date().getFullYear()} NAOSI · DLUT</span>
+      <span>OPEN SOURCE · OPEN MIND</span>
     </div>
   </div>
 </footer>

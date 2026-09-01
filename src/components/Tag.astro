@@ -4,14 +4,18 @@ interface Props {
 }
 
 const { href } = Astro.props;
+const classes =
+  "inline-flex items-center gap-1 rounded-full border border-primary/15 bg-primary-soft px-2.5 py-1 text-xs font-medium leading-none text-primary-dark decoration-none";
 ---
 
-<a
-  class="text-sm text-white bg-lime-8 decoration-none
-  px-6px py-2px line-height-none
-  inline-flex gap-x-1 items-center border-rd-full"
-  href={href}
-  target="_blank"
->
-  <slot />
-</a>
+{
+  href ? (
+    <a class={classes} href={href} target="_blank" rel="noreferrer">
+      <slot />
+    </a>
+  ) : (
+    <span class={classes}>
+      <slot />
+    </span>
+  )
+}

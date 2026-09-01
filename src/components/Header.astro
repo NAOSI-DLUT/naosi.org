@@ -1,36 +1,63 @@
 ---
 import { Image } from "astro:assets";
 import naosi from "../assets/naosi.svg";
+
+const pathname = Astro.url.pathname;
+const navItems = [
+  { href: "/#services", label: "服务" },
+  { href: "/events", label: "活动" },
+  { href: "/blog", label: "博客" },
+];
 ---
 
 <header
-  class="sticky top-0 bg-white border-b border-gray-200 z-10 flex justify-between items-center px-6 py-4"
+  class="sticky top-0 z-30 border-b border-line bg-paper/90 backdrop-blur-xl"
 >
-  <a class="inline-flex items-center gap-4" href="/">
-    <Image width={100} src={naosi} alt="naosi-logo" />
-    <span class="max-md:hidden text-xl text-black font-bold">网络与开源协会</span>
-  </a>
-  <div class="navbar text-gray inline-flex gap-x-2">
-    <a href="/events">Events</a>
-    <a href="/blog">Blog</a>
+  <div
+    class="mx-auto flex h-18 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8"
+  >
+    <a class="inline-flex items-center gap-3" href="/" aria-label="NAOSI 首页">
+      <Image width={88} src={naosi} alt="NAOSI" />
+      <span class="hidden border-l border-line pl-3 text-sm font-bold sm:block">
+        网络与开源协会
+      </span>
+    </a>
+    <div class="flex items-center gap-1 sm:gap-2">
+      <nav class="navbar flex items-center" aria-label="主导航">
+        {
+          navItems.map((item) => {
+            const active =
+              item.href !== "/#services" && pathname.startsWith(item.href);
+            return (
+              <a
+                href={item.href}
+                class:list={[
+                  "rounded-lg px-2.5 py-2 text-sm text-muted hover:bg-white hover:text-primary sm:px-3",
+                  { active },
+                ]}
+                aria-current={active ? "page" : undefined}
+              >
+                <span>{item.label}</span>
+              </a>
+            );
+          })
+        }
+      </nav>
+      <a
+        href="https://qm.qq.com/q/AxAh9JeZs4"
+        target="_blank"
+        rel="noreferrer"
+        class="ml-1 hidden items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-bold text-white hover:bg-primary-dark sm:inline-flex"
+      >
+        <span class="i-ri-group-fill" aria-hidden="true"></span>
+        加入我们
+      </a>
+    </div>
   </div>
 </header>
 
 <style>
-  .navbar a:hover,
   .navbar a.active {
-    @apply text-primary;
-  }
-
-  .navbar a.active {
-    @apply underline underline-2 underline-offset-6;
+    @apply bg-primary-soft text-primary-dark font-bold;
   }
 </style>
-
-<script>
-  document.querySelectorAll<HTMLAnchorElement>(".navbar a").forEach((a) => {
-    if (location.href.startsWith(a.href)) {
-      a.classList.add("active");
-    }
-  });
-</script>

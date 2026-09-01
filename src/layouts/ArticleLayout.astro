@@ -11,12 +11,19 @@ interface Props {
 }
 
 const { title, date, location, tags, comments = true } = Astro.props;
+const collectionName = Astro.url.pathname.startsWith("/events") ? "近期活动" : "社团博客";
+const collectionHref = Astro.url.pathname.startsWith("/events") ? "/events" : "/blog";
 ---
 
 <Layout title={title}>
-  <div class="text-base m-auto prose prose-truegray">
-    <h1>{title}</h1>
-    <p>
+  <article class="mx-auto max-w-3xl rounded-3xl border border-line bg-white px-5 py-8 shadow-sm sm:px-10 sm:py-12">
+    <a class="mb-7 inline-flex items-center gap-2 text-sm font-bold text-muted decoration-none hover:text-primary" href={collectionHref}>
+      <span class="i-ri-arrow-left-line" aria-hidden="true"></span>
+      返回{collectionName}
+    </a>
+    <header class="mb-9 border-b border-line pb-7">
+      <h1 class="m-0 text-3xl font-black leading-tight tracking-tight sm:text-5xl">{title}</h1>
+      <div class="mt-5 flex flex-wrap gap-2">
       {
         date && (
           <Tag>
@@ -34,39 +41,53 @@ const { title, date, location, tags, comments = true } = Astro.props;
         )
       }
       {tags && tags.map((tag) => <Tag>{tag}</Tag>)}
-    </p>
-    <slot />
+      </div>
+    </header>
+    <div class="article-prose prose prose-truegray max-w-none text-base leading-8">
+      <slot />
+    </div>
 
     {
       comments && (
-        <script
-          is:inline
-          src="https://giscus.app/client.js"
-          data-repo="NAOSI-DLUT/naosi.org"
-          data-repo-id="R_kgDOMv6ylQ"
-          data-category="Announcements"
-          data-category-id="DIC_kwDOMv6ylc4CkjfG"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="preferred_color_scheme"
-          data-lang="zh-CN"
-          crossorigin="anonymous"
-          async
-        />
+        <div class="mt-12 border-t border-line pt-8">
+          <script
+            is:inline
+            src="https://giscus.app/client.js"
+            data-repo="NAOSI-DLUT/naosi.org"
+            data-repo-id="R_kgDOMv6ylQ"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOMv6ylc4CkjfG"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="light"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async
+          />
+        </div>
       )
     }
-  </div>
+  </article>
 </Layout>
 
 <style>
-  .prose {
+  .article-prose {
     overflow-wrap: break-word;
   }
 
-  .prose code:not(pre code) {
+  .article-prose code:not(pre code) {
     white-space: pre-wrap;
+  }
+
+  .article-prose :global(a) {
+    @apply text-primary-dark decoration-primary/30 underline-offset-3;
+  }
+
+  .article-prose :global(h2),
+  .article-prose :global(h3) {
+    @apply scroll-mt-24 tracking-tight;
   }
 </style>

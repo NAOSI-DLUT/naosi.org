@@ -3,69 +3,32 @@ import { getCollection } from "astro:content";
 import Service from "../components/Service.astro";
 import Layout from "../layouts/Layout.astro";
 import Article from "../components/Article.astro";
+import SectionHeading from "../components/SectionHeading.astro";
 
 const events = await getCollection("events");
 const blog = await getCollection("blog");
 ---
 
 <Layout>
-  <h2>服务导航</h2>
-  <div
-    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-  >
-    <Service
-      icon="i-ri-graduation-cap-fill"
-      href="https://man.naosi.org/course/pan/"
-      title="资料云盘"
-      description="汇集各类学习资料"
-    />
-    <Service
-      icon="i-ri-compass-3-fill"
-      href="https://man.naosi.org/"
-      title="生存手册"
-      description="一站式生活指南"
-    />
-    <Service
-      icon="i-ri-archive-2-fill"
-      href="http://mirror.dlut.edu.cn/"
-      title="开源镜像"
-      description="开源软件镜像站"
-    />
-    <Service
-      icon="i-ri-earth-fill"
-      href="http://man.naosi.org/life/service/network/#dns"
-      title="域名解析"
-      description="202.118.66.6"
-    />
-    <Service
-      icon="i-ri-time-fill"
-      href="http://man.naosi.org/life/service/network/#ntp"
-      title="授时服务"
-      description="time.dlut.edu.cn"
-    />
-    <Service
-      icon="i-ri-tools-fill"
-      href="https://github.com/NAOSI-DLUT/awesome-dlut"
-      title="工具收集"
-      description="Awesome DLUT"
-    />
-    <Service
-      icon="i-ri-blogger-fill"
-      href="https://blogroll.naosi.org/"
-      title="友情链接"
-      description="成员们的博客友链"
-    />
-    <Service
-      icon="i-ri-mail-fill"
-      href="https://naosi-dlut.feishu.cn/mail"
-      title="社团邮箱"
-      description="support@naosi.org"
-    />
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div>
-      <h2><a href="/events">近期活动</a></h2>
-      <div>
+  <section id="services" class="scroll-mt-24">
+    <SectionHeading title="服务导航" />
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <Service icon="i-ri-graduation-cap-fill" href="https://man.naosi.org/course/pan/" title="资料云盘" description="汇集各类学习资料" />
+      <Service icon="i-ri-compass-3-fill" href="https://man.naosi.org/" title="生存手册" description="一站式生活指南" />
+      <Service icon="i-ri-archive-2-fill" href="http://mirror.dlut.edu.cn/" title="开源镜像" description="开源软件镜像站" />
+      <Service icon="i-ri-earth-fill" href="http://man.naosi.org/life/service/network/#dns" title="域名解析" description="202.118.66.6" />
+      <Service icon="i-ri-time-fill" href="http://man.naosi.org/life/service/network/#ntp" title="授时服务" description="time.dlut.edu.cn" />
+      <Service icon="i-ri-tools-fill" href="https://github.com/NAOSI-DLUT/awesome-dlut" title="工具收集" description="Awesome DLUT" />
+      <Service icon="i-ri-blogger-fill" href="https://blogroll.naosi.org/" title="友情链接" description="成员们的博客友链" />
+      <Service icon="i-ri-mail-fill" href="https://naosi-dlut.feishu.cn/mail" title="社团邮箱" description="support@naosi.org" />
+    </div>
+  </section>
+
+  <section class="pt-14">
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <div class="rounded-2xl border border-line bg-white p-5 shadow-sm sm:p-7">
+        <SectionHeading title="近期活动" href="/events" />
+        <div>
         {
           events
             .sort((a, b) => {
@@ -74,11 +37,11 @@ const blog = await getCollection("blog");
             .slice(0, 5)
             .map(async (entry) => <Article entry={entry} />)
         }
+        </div>
       </div>
-    </div>
-    <div>
-      <h2><a href="/blog">社团博客</a></h2>
-      <div>
+      <div class="rounded-2xl border border-line bg-white p-5 shadow-sm sm:p-7">
+        <SectionHeading title="社团博客" href="/blog" />
+        <div>
         {
           blog
             .sort((a, b) => {
@@ -87,13 +50,8 @@ const blog = await getCollection("blog");
             .slice(0, 5)
             .map(async (entry) => <Article entry={entry} />)
         }
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </Layout>
-
-<style>
-  h2 {
-    @apply text-2xl before:content-["#"] before:mr-2;
-  }
-</style>

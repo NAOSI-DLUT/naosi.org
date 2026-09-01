@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  eyebrow?: string;
+  href?: string;
+  linkLabel?: string;
+}
+
+const { title, eyebrow, href, linkLabel = "查看全部" } = Astro.props;
+---
+
+<div class="mb-6 flex items-end justify-between gap-4">
+  <div>
+    {eyebrow && <p class="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-primary">{eyebrow}</p>}
+    <h2 class="m-0 text-2xl font-black tracking-tight sm:text-3xl">
+      <span class="mr-2 font-mono text-primary" aria-hidden="true">#</span>{title}
+    </h2>
+  </div>
+  {
+    href && (
+      <a
+        class="hidden items-center gap-1 text-sm font-bold text-muted decoration-none hover:text-primary sm:inline-flex"
+        href={href}
+      >
+        {linkLabel}
+        <span class="i-ri-arrow-right-line" aria-hidden="true" />
+      </a>
+    )
+  }
+</div>
